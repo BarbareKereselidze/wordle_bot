@@ -1,7 +1,14 @@
-def get_allowed_guess_list(config):
-    allowed_guess_path = config['Paths']['allowed_guesses']
+def get_guess_list(path: str) -> list:
+    """ function to read words from a file and return a list of those words
 
-    with open(allowed_guess_path, 'r') as file:
-        allowed_guess_list = [word.strip() for word in file.readlines()]
+        parameters:
+        * path (str) path to the file containing the list of words
 
-        return allowed_guess_list
+        returns:
+        * guess_list (list) list of words in the file
+    """
+
+    with open(path, 'r') as file:
+        guess_list = [word.strip() for word in file.readlines()]
+
+        return guess_list
