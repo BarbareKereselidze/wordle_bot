@@ -1,8 +1,8 @@
 class CheckGuesses:
-    def __init__(self, guess_list, last_guess, guess):
+    def __init__(self, guess_list, last_guess, solution):
         self.guess_list = guess_list
         self.last_guess = last_guess
-        self.guess = guess
+        self.guess = solution
         self.potential_guesses = []
 
     def validate_guess(self, potential_guess):
@@ -33,8 +33,11 @@ class CheckGuesses:
         return True
 
     def filter_last_guesses(self):
-        for potential_guess in self.guess_list:
-            if self.validate_guess(potential_guess):
-                self.potential_guesses.append(potential_guess)
+        if self.last_guess is None:
+            return self.guess_list
+        else:
+            for potential_guess in self.guess_list:
+                if self.validate_guess(potential_guess):
+                    self.potential_guesses.append(potential_guess)
 
-        return self.potential_guesses
+            return self.potential_guesses

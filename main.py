@@ -21,7 +21,8 @@ def main():
     allowed_guesses = get_allowed_guess_list(config_dict)
     answer_guesses = get_answer_guess_list(config_dict)
 
-    play_wordle(solution, allowed_guesses)
+    """ start playing wordle """
+    play_wordle(solution, allowed_guesses, answer_guesses)
 
 
 if __name__ == "__main__":

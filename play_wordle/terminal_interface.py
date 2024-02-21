@@ -2,18 +2,24 @@ from play_wordle.user_input_validation import input_validation
 from play_wordle.get_feedback import GetFeedback
 from helper.rainbow_text import rainbow_output
 
+from wordle_bot.left_guesses import CheckGuesses
 
-def play_wordle(solution, allowed_guesses):
+
+def play_wordle(solution, allowed_guesses, answer_guesses):
     attempts = 0
+    last_guess = None
+    left_guess_list = answer_guesses
 
     while attempts < 6:
-        guess = input_validation(attempts, allowed_guesses)
+        left_guess_list = CheckGuesses(left_guess_list, last_guess, solution).filter_last_guesses()
+        guess = input_validation(attempts, allowed_guesses, left_guess_list)
         if guess:
             feedback = GetFeedback(guess, solution).provide_feedback()
             print(feedback)
             if guess.lower() == solution:
                 smiley_guy = "Congratulations! ٩̋(ˊ•͈ ꇴ •͈ˋ)و"
                 return rainbow_output(smiley_guy)
+            last_guess = guess
             attempts += 1
         else:
             print("\033[91mInvalid input.\033[0m")
