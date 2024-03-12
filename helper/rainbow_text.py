@@ -9,6 +9,7 @@ def rainbow_output(text: str) -> None:
     """
 
     colors = ['\033[31m', '\033[33m', '\033[32m', '\033[36m', '\033[34m', '\033[35m']
-    for char in text:
-        sys.stdout.write(colors[text.index(char) % len(colors)] + char)
-        sys.stdout.flush()
+    rainbow_text = ''
+    for index, char in enumerate(text):
+        rainbow_text += colors[index % len(colors)] + char
+    return rainbow_text + '\033[0m'

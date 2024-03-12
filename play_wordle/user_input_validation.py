@@ -1,7 +1,7 @@
 from wordle_bot.get_next_guess import MostProbableGuess
 
 
-def input_validation(attempts: int, allowed_guesses: list, left_guesses: list) -> str or bool:
+def input_validation(guess: str, allowed_guesses: list, left_guesses: list) -> str or bool:
     """ function to validate the user's input in a wordle game
 
         parameters:
@@ -13,7 +13,6 @@ def input_validation(attempts: int, allowed_guesses: list, left_guesses: list) -
         - str or bool: the user's input if it is valid, or false otherwise
     """
 
-    guess = input(f"Attempt {attempts + 1}/6: ")
     guess = guess.lower()
 
     # if guess is valid return guess
