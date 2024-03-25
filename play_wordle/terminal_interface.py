@@ -2,7 +2,7 @@ import sys
 
 from play_wordle.user_input_validation import input_validation
 from play_wordle.get_feedback import GetFeedback
-from helper.rainbow_text import rainbow_output
+from utils.helpers import rainbow_output
 
 from wordle_bot.left_guesses import CheckGuesses
 

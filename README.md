@@ -9,7 +9,6 @@ most probable guess based on left guesses and their letter frequencies.
 
 ## Notes:
 
-* No dependencies are needed to be installed.
 * The answer gets automatically retrieved from the Mashable website by parsing the page.
 * The player can make a guess on their own as well as let the bot make a guess for them <br>
   If you are stuck write "bot" in the input. 
@@ -17,6 +16,13 @@ most probable guess based on left guesses and their letter frequencies.
   However, the user can make a guess from the allowed guess list just like in real Wordle. 
 * The repository provides both the allowed guess list and answer guess lists in txt formats in alphabetical order. 
 
+## How To Use:
+
+* Make sure to install the required modules listed in requirements.txt:
+```
+   pip install -r requirements.txt
+   ```
+* Update the configuration details in config.ini before executing the scripts.
 
 ## Example Gameplay:
 

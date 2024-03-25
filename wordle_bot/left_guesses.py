@@ -1,11 +1,13 @@
 class CheckGuesses:
-    """ class to filter out guesses that are not valid based on the feedback from the previous guess
+    """ class to filter out guesses that are not valid based on
+        the feedback from the previous guess
 
         attributes:
         * guess_list (list) list of potential guess
         * last_guess (str) last guess made by the player
         * guess (str) correct word that the player is trying to guess
-        * potential_guesses (list) list to map potential guesses that are valid based on the feedback from the previous guess
+        * potential_guesses (list) list to map potential guesses
+            that are valid based on the feedback from the previous guess
         """
 
     def __init__(self, guess_list: list, last_guess: str, solution: str) -> None:
