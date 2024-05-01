@@ -1,7 +1,7 @@
 import sys
 
 from play_wordle.user_input_validation import input_validation
-from play_wordle.get_feedback import GetFeedback
+from play_wordle.get_feedback import return_feedback
 from utils.helpers import rainbow_output
 
 from wordle_bot.left_guesses import CheckGuesses
@@ -27,7 +27,7 @@ def play_wordle(solution: str, allowed_guesses: list, answer_guesses: list) -> N
         guess = input_validation(guess, allowed_guesses, left_guess_list)
 
         if guess:
-            feedback = GetFeedback(guess, solution).provide_feedback()
+            feedback = return_feedback(guess, solution)
             sys.stdout.write(feedback)
             sys.stdout.flush()
             sys.stdout.write("\n")

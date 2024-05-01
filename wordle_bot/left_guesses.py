@@ -13,7 +13,7 @@ class CheckGuesses:
     def __init__(self, guess_list: list, last_guess: str, solution: str) -> None:
         self.guess_list = guess_list
         self.last_guess = last_guess
-        self.guess = solution
+        self.solution = solution
         self.potential_guesses = []
 
     def validate_guess(self, potential_guess: str) -> bool:
@@ -26,30 +26,40 @@ class CheckGuesses:
             * (bool) true if the potential guess is valid, false otherwise
             """
 
-        new_guess = potential_guess
+        guess_map = self.last_guess
+        solution_map = self.solution
+        potential_guess_map = potential_guess
 
         for ind in range(5):
             current_letter = self.last_guess[ind]
 
             # if letter is green
-            if current_letter == self.guess[ind]:
-                if current_letter != potential_guess[ind]:
+            if current_letter == self.solution[ind]:
+                if current_letter == potential_guess[ind]:
+                    guess_map = guess_map[:ind] + '0' + guess_map[ind + 1:]
+                    solution_map = solution_map[:ind] + '1' + solution_map[ind + 1:]
+                    potential_guess_map = potential_guess_map[:ind] + '2' + potential_guess_map[ind + 1:]
+                else:
                     return False
 
-            # if letter is gray
-            elif current_letter not in self.guess:
-                if current_letter in potential_guess:
-                    return False
+        for ind in range(5):
+            current_letter = guess_map[ind]
 
             # if letter is yellow
-            elif current_letter == potential_guess[ind]:
-                return False
-
-            else:
-                if current_letter not in new_guess:
-                    return False
+            if current_letter in solution_map:
+                if current_letter in potential_guess_map and current_letter != potential_guess_map[ind]:
+                    solution_map = solution_map.replace(current_letter, '1', 1)
+                    potential_guess_map = potential_guess_map.replace(current_letter, '2', 1)
+                    guess_map = guess_map[:ind] + '0' + guess_map[ind + 1:]
                 else:
-                    new_guess = new_guess.replace(current_letter, '0', 1)
+                    return False
+
+        for ind in range(5):
+            current_letter = guess_map[ind]
+
+            # if letter is gray
+            if current_letter in potential_guess_map:
+                return False
 
         return True
 
@@ -57,7 +67,8 @@ class CheckGuesses:
         """ filters out invalid guesses based on guess_list and previous guess
 
             returns:
-            * guess_list / potential_guesses (list) list of potential guesses that are valid based on the feedback from the previous guess
+            * guess_list / potential_guesses (list) list of potential guesses that are
+              valid based on the feedback from the previous guess
             """
 
         if self.last_guess is None:

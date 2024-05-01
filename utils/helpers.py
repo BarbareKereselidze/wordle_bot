@@ -10,7 +10,6 @@ def get_guess_list(path: str) -> list:
 
     with open(path, 'r') as file:
         guess_list = [word.strip() for word in file.readlines()]
-
         return guess_list
 
 
