@@ -14,6 +14,8 @@ most probable guess based on left guesses and their letter frequencies.
   If you are stuck write "bot" in the input. 
 * Bot guesses are based on the Wordle guess list and not the allowed word list. <br>
   However, the user can make a guess from the allowed guess list just like in real Wordle. 
+* Bot plays wordle on hard mode (Uses all the information from last guesses, making the next guess without using a filler)
+  Only using the bot, you have 99.4% chance of guessing the word by the end of the game. 
 * The repository provides both the allowed guess list and answer guess lists in txt formats in alphabetical order. 
 
 ## How To Use:
@@ -22,7 +24,7 @@ most probable guess based on left guesses and their letter frequencies.
 ```
    pip install -r requirements.txt
    ```
-* Update the configuration details in config.ini before executing the scripts.
+* Update the configuration details in .env if necessary, before executing the scripts.
 
 ## Example Gameplay:
 
@@ -42,3 +44,4 @@ Attempt 4/6: build
 BUILD
 Congratulations! ٩̋(ˊ•͈ ꇴ •͈ˋ)و
 ```
+### 
